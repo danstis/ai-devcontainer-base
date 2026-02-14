@@ -51,12 +51,16 @@ RUN npm install -g \
 # ---------------------------------------------------------------------------
 # OpenCode CLI
 # ---------------------------------------------------------------------------
-RUN curl -fsSL https://opencode.ai/install | bash
+RUN curl -fsSL https://opencode.ai/install | bash \
+    && mv /root/.opencode/bin/opencode /usr/local/bin/opencode \
+    && rm -rf /root/.opencode
 
 # ---------------------------------------------------------------------------
 # Amp CLI
 # ---------------------------------------------------------------------------
-RUN curl -fsSL https://ampcode.com/install.sh | bash
+RUN curl -fsSL https://ampcode.com/install.sh | bash \
+    && mv /root/.amp/bin/amp /usr/local/bin/amp \
+    && rm -rf /root/.amp
 
 # ---------------------------------------------------------------------------
 # Verification labels
