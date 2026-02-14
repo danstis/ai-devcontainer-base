@@ -32,11 +32,20 @@ RUN (type -p wget >/dev/null || (apt-get update && apt-get install -y wget)) \
 # ---------------------------------------------------------------------------
 # AI / Agent CLI tools (npm global installs)
 # ---------------------------------------------------------------------------
+# renovate: datasource=npm depName=@anthropic-ai/claude-code
+ARG CLAUDE_CODE_VERSION=2.1.42
+# renovate: datasource=npm depName=@github/copilot
+ARG GITHUB_COPILOT_VERSION=0.0.410
+# renovate: datasource=npm depName=@google/gemini-cli
+ARG GEMINI_CLI_VERSION=0.28.2
+# renovate: datasource=npm depName=@openai/codex
+ARG OPENAI_CODEX_VERSION=0.101.0
+
 RUN npm install -g \
-    @anthropic-ai/claude-code \
-    @github/copilot \
-    @google/gemini-cli \
-    @openai/codex \
+    @anthropic-ai/claude-code@${CLAUDE_CODE_VERSION} \
+    @github/copilot@${GITHUB_COPILOT_VERSION} \
+    @google/gemini-cli@${GEMINI_CLI_VERSION} \
+    @openai/codex@${OPENAI_CODEX_VERSION} \
     && npm cache clean --force
 
 # ---------------------------------------------------------------------------
