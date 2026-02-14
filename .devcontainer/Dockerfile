@@ -4,6 +4,9 @@
 # =============================================================================
 FROM mcr.microsoft.com/devcontainers/base:noble
 
+# Set the SHELL option -o pipefail before RUN with a pipe in it (DL4006)
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
 # Avoid prompts during package installation
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -11,6 +14,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 # Node.js (LTS) via NodeSource
 # ---------------------------------------------------------------------------
 ARG NODE_VERSION=22
+# hadolint ignore=DL3008
 RUN curl -fsSL https://deb.nodesource.com/setup_${NODE_VERSION}.x | bash - \
     && apt-get install -y --no-install-recommends nodejs \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
@@ -18,9 +22,10 @@ RUN curl -fsSL https://deb.nodesource.com/setup_${NODE_VERSION}.x | bash - \
 # ---------------------------------------------------------------------------
 # GitHub CLI
 # ---------------------------------------------------------------------------
-RUN (type -p wget >/dev/null || (apt-get update && apt-get install -y wget)) \
-    && mkdir -p -m 755 /etc/apt/keyrings \
-    && wget -qO- https://cli.github.com/packages/githubcli-archive-keyring.gpg \
+# hadolint ignore=DL3008
+RUN mkdir -p /etc/apt/keyrings \
+    && chmod 755 /etc/apt/keyrings \
+    && curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg \
     | tee /etc/apt/keyrings/githubcli-archive-keyring.gpg >/dev/null \
     && chmod go+r /etc/apt/keyrings/githubcli-archive-keyring.gpg \
     && echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" \
