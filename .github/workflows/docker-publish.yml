@@ -66,12 +66,12 @@ jobs:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
             # --- main branch tags ---
-            type=raw,value=${{ steps.version.outputs.new_version }},enable=${{ github.ref == 'refs/heads/main' }}
-            type=raw,value=${{ steps.version.outputs.new_major }}.${{ steps.version.outputs.new_minor }},enable=${{ github.ref == 'refs/heads/main' }}
-            type=raw,value=${{ steps.version.outputs.new_major }},enable=${{ github.ref == 'refs/heads/main' }}
+            type=raw,value=${{ steps.version.outputs.new_version }},enable=${{ github.ref == 'refs/heads/main' && steps.version.outputs.new_version != '' }}
+            type=raw,value=${{ steps.version.outputs.new_major }}.${{ steps.version.outputs.new_minor }},enable=${{ github.ref == 'refs/heads/main' && steps.version.outputs.new_minor != '' }}
+            type=raw,value=${{ steps.version.outputs.new_major }},enable=${{ github.ref == 'refs/heads/main' && steps.version.outputs.new_major != '' }}
             type=raw,value=latest,enable=${{ github.ref == 'refs/heads/main' }}
             # --- non-main pre-release tag ---
-            type=raw,value=${{ steps.version.outputs.new_version }}-${{ steps.branch.outputs.name }},enable=${{ github.ref != 'refs/heads/main' }}
+            type=raw,value=${{ steps.version.outputs.new_version }}-${{ steps.branch.outputs.name }},enable=${{ github.ref != 'refs/heads/main' && steps.version.outputs.new_version != '' }}
 
       - name: Build and push image
         uses: docker/build-push-action@v6
