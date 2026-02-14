@@ -34,14 +34,10 @@ RUN (type -p wget >/dev/null || (apt-get update && apt-get install -y wget)) \
 # ---------------------------------------------------------------------------
 RUN npm install -g \
         @anthropic-ai/claude-code \
+        @github/copilot \
         @google/gemini-cli \
         @openai/codex \
     && npm cache clean --force
-
-# ---------------------------------------------------------------------------
-# GitHub Copilot CLI (gh extension)
-# ---------------------------------------------------------------------------
-RUN gh extension install github/gh-copilot
 
 # ---------------------------------------------------------------------------
 # OpenCode CLI
