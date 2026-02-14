@@ -21,10 +21,10 @@ RUN curl -fsSL https://deb.nodesource.com/setup_${NODE_VERSION}.x | bash - \
 RUN (type -p wget >/dev/null || (apt-get update && apt-get install -y wget)) \
     && mkdir -p -m 755 /etc/apt/keyrings \
     && wget -qO- https://cli.github.com/packages/githubcli-archive-keyring.gpg \
-       | tee /etc/apt/keyrings/githubcli-archive-keyring.gpg >/dev/null \
+    | tee /etc/apt/keyrings/githubcli-archive-keyring.gpg >/dev/null \
     && chmod go+r /etc/apt/keyrings/githubcli-archive-keyring.gpg \
     && echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" \
-       | tee /etc/apt/sources.list.d/github-cli.list >/dev/null \
+    | tee /etc/apt/sources.list.d/github-cli.list >/dev/null \
     && apt-get update \
     && apt-get install -y --no-install-recommends gh \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
@@ -33,10 +33,10 @@ RUN (type -p wget >/dev/null || (apt-get update && apt-get install -y wget)) \
 # AI / Agent CLI tools (npm global installs)
 # ---------------------------------------------------------------------------
 RUN npm install -g \
-        @anthropic-ai/claude-code \
-        @github/copilot \
-        @google/gemini-cli \
-        @openai/codex \
+    @anthropic-ai/claude-code \
+    @github/copilot \
+    @google/gemini-cli \
+    @openai/codex \
     && npm cache clean --force
 
 # ---------------------------------------------------------------------------
@@ -47,11 +47,11 @@ RUN curl -fsSL https://opencode.ai/install | bash
 # ---------------------------------------------------------------------------
 # Amp CLI
 # ---------------------------------------------------------------------------
-RUN curl -fsSL https://amp.dev/install | bash
+RUN curl -fsSL https://ampcode.com/install.sh | bash
 
 # ---------------------------------------------------------------------------
 # Verification labels
 # ---------------------------------------------------------------------------
 LABEL maintainer="danstis" \
-      description="Dev Container base image with AI/agent CLI tooling" \
-      org.opencontainers.image.source="https://github.com/danstis/ai-devcontainer-base"
+    description="Dev Container base image with AI/agent CLI tooling" \
+    org.opencontainers.image.source="https://github.com/danstis/ai-devcontainer-base"
