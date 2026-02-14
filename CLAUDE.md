@@ -25,7 +25,7 @@ For each CLI/tool addition, include:
 
 1. Installation source and method.
 2. Version pinning strategy (or rationale for floating versions).
-3. Verification command (e.g., `tool --version`).
+3. Verification command(s) (e.g., `tool --version` or `test -d /home/vscode/<asset>` for home-directory assets).
 4. Any required environment variables or auth notes.
 
 ## Documentation checklist

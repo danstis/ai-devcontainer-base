@@ -54,6 +54,16 @@ RUN npm install -g \
     && npm cache clean --force
 
 # ---------------------------------------------------------------------------
+# AgentOS
+# ---------------------------------------------------------------------------
+ARG AGENT_OS_REPO=https://github.com/buildermethods/agent-os.git
+ARG AGENT_OS_REF=main
+
+RUN git clone --depth 1 --branch ${AGENT_OS_REF} ${AGENT_OS_REPO} /home/vscode/agent-os \
+    && rm -rf /home/vscode/agent-os/.git \
+    && chown -R vscode:vscode /home/vscode/agent-os
+
+# ---------------------------------------------------------------------------
 # OpenCode CLI
 # ---------------------------------------------------------------------------
 RUN curl -fsSL https://opencode.ai/install | bash \

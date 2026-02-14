@@ -110,6 +110,10 @@ jobs:
             
             echo 'Checking amp...'
             amp --version
+
+            echo 'Checking AgentOS workspace...'
+            test -d /home/vscode/agent-os
+            test ! -d /home/vscode/agent-os/.git
             
             echo 'All checks passed!'
           "
