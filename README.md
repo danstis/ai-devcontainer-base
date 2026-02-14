@@ -29,17 +29,7 @@ The initial image target includes:
 
 This repository will publish (or locally build) a base image that downstream projects can reference from their `.devcontainer/devcontainer.json`.
 
-Example (illustrative only):
-
-```json
-{
-  "name": "my-project",
-  "image": "ghcr.io/danstis/ai-devcontainer-base:latest",
-  "features": {
-    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
-  }
-}
-```
+See [`devcontainer-example.json`](./devcontainer-example.json) for a complete, opinionated example. Copy it to your project's `.devcontainer/devcontainer.json` and customise as needed.
 
 ## Compatibility principles
 
