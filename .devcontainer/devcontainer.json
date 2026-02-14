@@ -9,14 +9,33 @@
   "features": {
     "ghcr.io/devcontainers/features/docker-in-docker:2": {},
     "ghcr.io/schlich/devcontainer-features/powerlevel10k:1": {},
-    "ghcr.io/hspaans/devcontainer-features/ansible-lint:2": {},
-    "ghcr.io/devcontainers-extra/features/ansible:2": {}
+    "ghcr.io/devcontainers-extra/features/markdownlint-cli2:1": {},
+    "ghcr.io/dhoeric/features/hadolint:1": {}
   },
 
   "mounts": [
     "source=${localEnv:HOME}${localEnv:USERPROFILE}/.ssh,target=/home/vscode/.ssh,type=bind,consistency=cached",
     "source=${localEnv:HOME}${localEnv:USERPROFILE}/.config,target=/home/vscode/.config,type=bind,consistency=cached"
-  ]
+  ],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "streetsidesoftware.code-spell-checker",
+        "riussi.code-stats-vscode",
+        "openai.chatgpt",
+        "EditorConfig.EditorConfig",
+        "tamasfe.even-better-toml",
+        "google.geminicodeassist",
+        "mhutchie.git-graph",
+        "ryanluker.vscode-coverage-gutters",
+        "SonarSource.sonarlint-vscode",
+        "dakara.transformer",
+        "Gruntfuggly.todo-tree",
+        "redhat.vscode-xml",
+        "redhat.vscode-yaml"
+      ]
+    }
+  }
 
   // SSH agent forwarding is handled automatically by VS Code / devcontainer CLI.
 
