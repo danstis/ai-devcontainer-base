@@ -20,7 +20,7 @@ jobs:
           failure-threshold: warning
 
       - name: Lint Workflow
-        uses: raven-actions/actionlint@v1
+        uses: raven-actions/actionlint@v2
 
       - name: Lint Markdown
         uses: DavidAnson/markdownlint-cli2-action@v16
