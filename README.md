@@ -54,6 +54,14 @@ To preserve compatibility with the broader Dev Containers ecosystem, the base im
 
 This repository is currently in bootstrap phase. The initial documentation files establish contribution and agent-collaboration standards. Build definitions and installation scripts will follow.
 
+## Quality Assurance
+
+This repository uses automated testing to ensure the image builds correctly and all tools are functional. The CI pipeline includes:
+
+- **Linting**: Dockerfile (Hadolint), GitHub Workflows (Actionlint), and Markdown.
+- **Build Verification**: Ensures the Docker image builds successfully.
+- **Smoke Tests**: Verifies that all installed CLIs are executable and available in the default `PATH` for the `vscode` user.
+
 ## Contributing
 
 See [CONTRIBUTING.md](./CONTRIBUTING.md) for workflow and contribution guidelines.

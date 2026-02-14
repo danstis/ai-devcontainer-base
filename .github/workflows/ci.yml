@@ -1,0 +1,93 @@
+name: CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      
+      - name: Lint Dockerfile
+        uses: hadolint/hadolint-action@v3.1.0
+        with:
+          dockerfile: .devcontainer/Dockerfile
+          failure-threshold: warning
+
+      - name: Lint Workflow
+        uses: raven-actions/actionlint@v1
+
+      - name: Lint Markdown
+        uses: DavidAnson/markdownlint-cli2-action@v16
+        with:
+          globs: "**/*.md"
+
+      - name: Install Dev Container CLI
+        run: npm install -g @devcontainers/cli
+
+      - name: Validate Dev Container Config
+        run: devcontainer read-configuration --workspace-folder .
+
+      - name: Validate Renovate Config
+        run: npx --yes --package renovate -- renovate-config-validator renovate.json
+
+  build-and-test:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build image
+        uses: docker/build-push-action@v6
+        with:
+          context: .devcontainer
+          file: .devcontainer/Dockerfile
+          push: false
+          load: true
+          tags: ai-devcontainer-base:test
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Verify tools as vscode user
+        run: |
+          docker run --rm --user vscode ai-devcontainer-base:test bash -c "
+            set -e
+            echo 'Testing as user: \$(whoami)'
+            
+            echo 'Checking node...'
+            node --version
+            
+            echo 'Checking gh...'
+            gh --version
+            
+            echo 'Checking claude...'
+            claude --version
+            
+            echo 'Checking copilot...'
+            copilot --version
+            
+            echo 'Checking gemini...'
+            gemini --version
+            
+            echo 'Checking codex...'
+            codex --version
+            
+            echo 'Checking opencode...'
+            opencode --version
+            
+            echo 'Checking amp...'
+            amp --version
+            
+            echo 'All checks passed!'
+          "
