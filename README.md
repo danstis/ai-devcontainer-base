@@ -22,6 +22,7 @@ The initial image target includes:
 - Codex CLI
 - spec-kit CLI
 - Amp CLI
+- AgentOS (checked out to `~/agent-os`)
 
 > Tool installation scripts and exact version pinning will be managed in this repo as the build configuration is added.
 
@@ -38,6 +39,7 @@ To preserve compatibility with the broader Dev Containers ecosystem, the base im
 - Follow Dev Container best practices for non-root users and shell setup.
 - Avoid breaking standard feature installation behavior.
 - Keep essential developer tooling available in common `PATH` locations.
+- Pre-seed home-directory assets (like AgentOS) under `/home/vscode` when needed.
 - Prefer explicit version pinning for reproducible builds.
 
 ## Repository structure
