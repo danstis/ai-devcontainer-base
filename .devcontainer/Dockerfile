@@ -45,12 +45,15 @@ ARG GITHUB_COPILOT_VERSION=0.0.410
 ARG GEMINI_CLI_VERSION=0.28.2
 # renovate: datasource=npm depName=@openai/codex
 ARG OPENAI_CODEX_VERSION=0.101.0
+# renovate: datasource=npm depName=@spec-kit/cli
+ARG SPEC_KIT_CLI_VERSION=0.3.1
 
 RUN npm install -g \
     @anthropic-ai/claude-code@${CLAUDE_CODE_VERSION} \
     @github/copilot@${GITHUB_COPILOT_VERSION} \
     @google/gemini-cli@${GEMINI_CLI_VERSION} \
     @openai/codex@${OPENAI_CODEX_VERSION} \
+    @spec-kit/cli@${SPEC_KIT_CLI_VERSION} \
     && npm cache clean --force
 
 # ---------------------------------------------------------------------------

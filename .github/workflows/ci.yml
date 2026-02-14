@@ -105,6 +105,9 @@ jobs:
             echo 'Checking codex...'
             codex --version
             
+            echo 'Checking speckit...'
+            speckit --version
+            
             echo 'Checking opencode...'
             opencode --version
             
