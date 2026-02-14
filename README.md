@@ -34,7 +34,7 @@ Example (illustrative only):
 ```json
 {
   "name": "my-project",
-  "image": "ghcr.io/<org>/ai-devcontainer-base:latest",
+  "image": "ghcr.io/danstis/ai-devcontainer-base:latest",
   "features": {
     "ghcr.io/devcontainers/features/docker-in-docker:2": {}
   }
