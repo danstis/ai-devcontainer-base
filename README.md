@@ -17,7 +17,7 @@ The initial image target includes:
 
 - Gemini CLI
 - GitHub Copilot CLI
-- Claude Code
+- Claude Code (native installer)
 - OpenCode
 - Codex CLI
 - spec-kit CLI
