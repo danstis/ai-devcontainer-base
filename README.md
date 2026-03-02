@@ -11,19 +11,18 @@ This repository defines the baseline image used by project-specific development 
 - Remain compatible with regular Dev Container features and customizations.
 - Keep startup and maintenance friction low for contributors.
 
-## Planned preinstalled tooling
+## Preinstalled tooling
 
-The initial image target includes:
+The image includes the following AI/agent CLIs, all installed via npm with pinned versions:
 
-- Gemini CLI
-- GitHub Copilot CLI
-- Claude Code
-- OpenCode
-- Codex CLI
-- spec-kit CLI
-- Amp CLI
+- [Claude Code](https://www.npmjs.com/package/@anthropic-ai/claude-code) (`@anthropic-ai/claude-code`)
+- [GitHub Copilot CLI](https://www.npmjs.com/package/@github/copilot) (`@github/copilot`)
+- [Gemini CLI](https://www.npmjs.com/package/@google/gemini-cli) (`@google/gemini-cli`)
+- [Codex CLI](https://www.npmjs.com/package/@openai/codex) (`@openai/codex`)
+- [OpenCode](https://www.npmjs.com/package/opencode-ai) (`opencode-ai`)
+- [Amp CLI](https://www.npmjs.com/package/@sourcegraph/amp) (`@sourcegraph/amp`)
 
-> Tool installation scripts and exact version pinning will be managed in this repo as the build configuration is added.
+Version updates are tracked automatically by [Mend Renovate](https://docs.renovatebot.com/). When a new version of any tool is published to npm, Renovate raises a PR to bump the pinned version in the Dockerfile.
 
 ## Intended usage
 
@@ -40,9 +39,9 @@ To preserve compatibility with the broader Dev Containers ecosystem, the base im
 - Keep essential developer tooling available in common `PATH` locations.
 - Prefer explicit version pinning for reproducible builds.
 
-## Repository structure
+## Automated dependency updates
 
-This repository is currently in bootstrap phase. The initial documentation files establish contribution and agent-collaboration standards. Build definitions and installation scripts will follow.
+All AI agent CLI versions are pinned in the Dockerfile via `ARG` declarations with `# renovate:` comments. Mend Renovate monitors npm for new releases and automatically opens PRs to update these versions. When a PR merges to `main`, the CI/CD pipeline rebuilds and publishes the image.
 
 ## Quality Assurance
 

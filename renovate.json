@@ -2,5 +2,30 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:recommended"
+  ],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "description": "Update AI agent CLI versions in Dockerfile ARG definitions",
+      "fileMatch": [
+        "(^|/)Dockerfile$"
+      ],
+      "matchStringsStrategy": "any",
+      "matchStrings": [
+        "#\\s*renovate:\\s*datasource=(?<datasource>[a-z-]+?)\\s+depName=(?<depName>\\S+)\\s*\\nARG\\s+\\w+=(?<currentValue>\\S+)"
+      ]
+    }
+  ],
+  "packageRules": [
+    {
+      "description": "Group AI agent CLI updates together",
+      "matchFileNames": [
+        ".devcontainer/Dockerfile"
+      ],
+      "groupName": "ai-agent-clis",
+      "groupSlug": "ai-agent-clis",
+      "semanticCommitType": "build",
+      "semanticCommitScope": "deps"
+    }
   ]
 }
