@@ -17,13 +17,13 @@ The initial image target includes:
 
 - Gemini CLI
 - GitHub Copilot CLI
-- Claude Code (native installer)
+- Claude Code CLI
 - OpenCode
 - Codex CLI
 - spec-kit CLI
 - Amp CLI
 
-> Tool installation scripts and exact version pinning will be managed in this repo as the build configuration is added.
+> Tool installation scripts and exact version pinning will be managed in this repo as the build configuration is added. Where possible, package versions should be pinned and kept current via Renovate auto-updates.
 
 ## Intended usage
 

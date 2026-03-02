@@ -17,7 +17,7 @@ This project maintains a reusable Dev Container base image with AI tooling prein
 ## Contribution guidelines
 
 - Prefer reproducible installs (pinned versions where practical).
-- For Claude Code, prefer Anthropic's native installer flow rather than npm-based wrappers.
+- For Claude Code, keep install/version references aligned with the Renovate-managed package workflow used in this repository.
 - Keep Docker/image layers efficient and understandable.
 - Minimize breaking changes to default shell/user/tooling assumptions.
 - Document any new environment variables, auth steps, or prerequisites.

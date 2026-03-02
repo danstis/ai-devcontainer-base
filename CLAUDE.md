@@ -23,7 +23,7 @@ Use this file as a concise operating guide when assisting with this repository. 
 
 For each CLI/tool addition, include:
 
-1. Installation source and method (for Claude Code, use Anthropic's native installer flow).
+1. Installation source and method (for Claude Code, keep the documented install path consistent with the Renovate-managed workflow in this repo).
 2. Version pinning strategy (or rationale for floating versions).
 3. Verification command (e.g., `tool --version`).
 4. Any required environment variables or auth notes.
