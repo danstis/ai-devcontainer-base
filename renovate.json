@@ -24,8 +24,8 @@
       ],
       "groupName": "ai-agent-clis",
       "groupSlug": "ai-agent-clis",
-      "semanticCommitType": "build",
-      "semanticCommitScope": "deps"
+      "semanticCommitType": "feat",
+      "semanticCommitScope": "tools"
     }
   ]
 }
