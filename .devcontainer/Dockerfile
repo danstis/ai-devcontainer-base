@@ -45,27 +45,19 @@ ARG GITHUB_COPILOT_VERSION=0.0.410
 ARG GEMINI_CLI_VERSION=0.28.2
 # renovate: datasource=npm depName=@openai/codex
 ARG OPENAI_CODEX_VERSION=0.101.0
+# renovate: datasource=npm depName=opencode-ai
+ARG OPENCODE_VERSION=1.2.15
+# renovate: datasource=npm depName=@sourcegraph/amp
+ARG AMP_VERSION=0.0.1772481904-gb6b1d9
 
 RUN npm install -g \
     @anthropic-ai/claude-code@${CLAUDE_CODE_VERSION} \
     @github/copilot@${GITHUB_COPILOT_VERSION} \
     @google/gemini-cli@${GEMINI_CLI_VERSION} \
     @openai/codex@${OPENAI_CODEX_VERSION} \
+    opencode-ai@${OPENCODE_VERSION} \
+    @sourcegraph/amp@${AMP_VERSION} \
     && npm cache clean --force
-
-# ---------------------------------------------------------------------------
-# OpenCode CLI
-# ---------------------------------------------------------------------------
-RUN curl -fsSL https://opencode.ai/install | bash \
-    && mv /root/.opencode/bin/opencode /usr/local/bin/opencode \
-    && rm -rf /root/.opencode
-
-# ---------------------------------------------------------------------------
-# Amp CLI
-# ---------------------------------------------------------------------------
-RUN curl -fsSL https://ampcode.com/install.sh | bash \
-    && mv /root/.amp/bin/amp /usr/local/bin/amp \
-    && rm -rf /root/.amp
 
 # ---------------------------------------------------------------------------
 # Verification labels
