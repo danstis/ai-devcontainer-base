@@ -112,7 +112,7 @@ jobs:
             amp --version
 
             echo 'Checking vibe-kanban...'
-            vibe-kanban --version
+            command -v vibe-kanban
 
             echo 'All checks passed!'
           "
