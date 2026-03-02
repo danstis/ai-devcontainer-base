@@ -12,7 +12,7 @@
       ],
       "matchStringsStrategy": "any",
       "matchStrings": [
-        "#\\s*renovate:\\s*datasource=(?<datasource>[a-z-]+?)\\s+depName=(?<depName>.+?)\\s*\\nARG\\s+\\w+=(?<currentValue>.+?)\\s*$"
+        "#\\s*renovate:\\s*datasource=(?<datasource>[a-z-]+?)\\s+depName=(?<depName>\\S+)\\s*\\nARG\\s+\\w+=(?<currentValue>\\S+)"
       ]
     }
   ],
