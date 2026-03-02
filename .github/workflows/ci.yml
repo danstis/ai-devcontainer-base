@@ -110,6 +110,9 @@ jobs:
             
             echo 'Checking amp...'
             amp --version
-            
+
+            echo 'Checking vibe-kanban...'
+            vibe-kanban --version
+
             echo 'All checks passed!'
           "
