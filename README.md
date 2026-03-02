@@ -21,6 +21,7 @@ The image includes the following AI/agent CLIs, all installed via npm with pinne
 - [Codex CLI](https://www.npmjs.com/package/@openai/codex) (`@openai/codex`)
 - [OpenCode](https://www.npmjs.com/package/opencode-ai) (`opencode-ai`)
 - [Amp CLI](https://www.npmjs.com/package/@sourcegraph/amp) (`@sourcegraph/amp`)
+- [Vibe Kanban](https://www.npmjs.com/package/vibe-kanban) (`vibe-kanban`)
 
 Version updates are tracked automatically by [Mend Renovate](https://docs.renovatebot.com/). When a new version of any tool is published to npm, Renovate raises a PR to bump the pinned version in the Dockerfile.
 

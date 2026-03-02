@@ -49,6 +49,8 @@ ARG OPENAI_CODEX_VERSION=0.107.0
 ARG OPENCODE_VERSION=1.2.15
 # renovate: datasource=npm depName=@sourcegraph/amp
 ARG AMP_VERSION=0.0.1772481904-gb6b1d9
+# renovate: datasource=npm depName=vibe-kanban
+ARG VIBE_KANBAN_VERSION=0.1.22
 
 RUN npm install -g \
     @anthropic-ai/claude-code@${CLAUDE_CODE_VERSION} \
@@ -57,6 +59,7 @@ RUN npm install -g \
     @openai/codex@${OPENAI_CODEX_VERSION} \
     opencode-ai@${OPENCODE_VERSION} \
     @sourcegraph/amp@${AMP_VERSION} \
+    vibe-kanban@${VIBE_KANBAN_VERSION} \
     && npm cache clean --force
 
 # ---------------------------------------------------------------------------
