@@ -68,7 +68,8 @@ RUN npm install -g \
 # AgentOS
 # ---------------------------------------------------------------------------
 ARG AGENT_OS_REPO=https://github.com/buildermethods/agent-os.git
-ARG AGENT_OS_REF=main
+# renovate: datasource=github-releases depName=buildermethods/agent-os
+ARG AGENT_OS_REF=v3.0.0
 
 RUN git clone --depth 1 --branch ${AGENT_OS_REF} ${AGENT_OS_REPO} /home/vscode/agent-os \
     && rm -rf /home/vscode/agent-os/.git \
