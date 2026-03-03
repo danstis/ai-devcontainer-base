@@ -22,6 +22,7 @@ The image includes the following AI/agent CLIs, all installed via npm with pinne
 - [OpenCode](https://www.npmjs.com/package/opencode-ai) (`opencode-ai`)
 - [Amp CLI](https://www.npmjs.com/package/@sourcegraph/amp) (`@sourcegraph/amp`)
 - [Vibe Kanban](https://www.npmjs.com/package/vibe-kanban) (`vibe-kanban`)
+- [AgentOS](https://github.com/buildermethods/agent-os) (checked out to `~/agent-os`)
 
 Version updates are tracked automatically by [Mend Renovate](https://docs.renovatebot.com/). When a new version of any tool is published to npm, Renovate raises a PR to bump the pinned version in the Dockerfile.
 
@@ -38,6 +39,7 @@ To preserve compatibility with the broader Dev Containers ecosystem, the base im
 - Follow Dev Container best practices for non-root users and shell setup.
 - Avoid breaking standard feature installation behavior.
 - Keep essential developer tooling available in common `PATH` locations.
+- Pre-seed home-directory assets (like AgentOS) under `/home/vscode` when needed.
 - Prefer explicit version pinning for reproducible builds.
 
 ## Automated dependency updates

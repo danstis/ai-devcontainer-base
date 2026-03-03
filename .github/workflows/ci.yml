@@ -114,5 +114,9 @@ jobs:
             echo 'Checking vibe-kanban...'
             command -v vibe-kanban
 
+            echo 'Checking AgentOS workspace...'
+            test -d /home/vscode/agent-os
+            test ! -d /home/vscode/agent-os/.git
+
             echo 'All checks passed!'
           "
