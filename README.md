@@ -24,6 +24,10 @@ The image includes the following AI/agent CLIs, all installed via npm with pinne
 - [Vibe Kanban](https://www.npmjs.com/package/vibe-kanban) (`vibe-kanban`)
 - [AgentOS](https://github.com/buildermethods/agent-os) (checked out to `~/agent-os`)
 
+The image also includes the following system utilities, installed from the Ubuntu Noble apt repository:
+
+- [tmux](https://github.com/tmux/tmux/wiki) — terminal multiplexer
+
 Version updates are tracked automatically by [Mend Renovate](https://docs.renovatebot.com/). When a new version of any tool is published to npm, Renovate raises a PR to bump the pinned version in the Dockerfile.
 
 ## Intended usage
@@ -44,7 +48,7 @@ To preserve compatibility with the broader Dev Containers ecosystem, the base im
 
 ## Automated dependency updates
 
-All AI agent CLI versions are pinned in the Dockerfile via `ARG` declarations with `# renovate:` comments. Mend Renovate monitors npm for new releases and automatically opens PRs to update these versions. When a PR merges to `main`, the CI/CD pipeline rebuilds and publishes the image.
+All tool versions are tracked in the Dockerfile via `ARG` declarations with `# renovate:` comments. Mend Renovate monitors npm (for AI/agent CLIs) and GitHub Releases (for tmux and other non-npm tools) and automatically opens PRs to update these versions. When a PR merges to `main`, the CI/CD pipeline rebuilds and publishes the image.
 
 ## Quality Assurance
 
@@ -52,7 +56,7 @@ This repository uses automated testing to ensure the image builds correctly and 
 
 - **Linting**: Dockerfile (Hadolint), GitHub Workflows (Actionlint), and Markdown.
 - **Build Verification**: Ensures the Docker image builds successfully.
-- **Smoke Tests**: Verifies that all installed CLIs are executable and available in the default `PATH` for the `vscode` user.
+- **Smoke Tests**: Verifies that installed CLIs and terminal tooling are executable and available in the default `PATH` for the `vscode` user.
 
 ## Contributing
 

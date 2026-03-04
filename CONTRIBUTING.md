@@ -21,6 +21,7 @@ This project maintains a reusable Dev Container base image with AI tooling prein
 - Minimize breaking changes to default shell/user/tooling assumptions.
 - Document any new environment variables, auth steps, or prerequisites.
 - If you add non-CLI assets to the image (for example, a home-directory checkout), document the path and add a verification check.
+- If you add core terminal tooling (for example `tmux`), include an explicit smoke-check command in CI.
 
 ## Suggested PR checklist
 

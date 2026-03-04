@@ -11,6 +11,20 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 ENV DEBIAN_FRONTEND=noninteractive
 
 # ---------------------------------------------------------------------------
+# Core terminal utilities
+# tmux: tracked via Renovate (datasource=github-releases). The ARG below is
+# a version sentinel — Renovate opens PRs when a new upstream release lands.
+# The apt install uses Ubuntu Noble's package (version strings differ from
+# GitHub tags, so the ARG is not passed to apt-get).
+# ---------------------------------------------------------------------------
+# renovate: datasource=github-releases depName=tmux/tmux
+ARG TMUX_VERSION=3.5a
+# hadolint ignore=DL3008
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends tmux \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# ---------------------------------------------------------------------------
 # Node.js (LTS) via NodeSource
 # ---------------------------------------------------------------------------
 ARG NODE_VERSION=22
