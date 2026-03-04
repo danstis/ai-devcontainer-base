@@ -48,7 +48,7 @@ To preserve compatibility with the broader Dev Containers ecosystem, the base im
 
 ## Automated dependency updates
 
-All AI agent CLI versions are pinned in the Dockerfile via `ARG` declarations with `# renovate:` comments. Mend Renovate monitors npm for new releases and automatically opens PRs to update these versions. When a PR merges to `main`, the CI/CD pipeline rebuilds and publishes the image.
+All tool versions are tracked in the Dockerfile via `ARG` declarations with `# renovate:` comments. Mend Renovate monitors npm (for AI/agent CLIs) and GitHub Releases (for tmux and other non-npm tools) and automatically opens PRs to update these versions. When a PR merges to `main`, the CI/CD pipeline rebuilds and publishes the image.
 
 ## Quality Assurance
 
