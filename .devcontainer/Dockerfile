@@ -40,19 +40,19 @@ RUN mkdir -p /etc/apt/keyrings \
 # AI / Agent CLI tools (npm global installs)
 # ---------------------------------------------------------------------------
 # renovate: datasource=npm depName=@anthropic-ai/claude-code
-ARG CLAUDE_CODE_VERSION=2.1.63
+ARG CLAUDE_CODE_VERSION=2.1.68
 # renovate: datasource=npm depName=@github/copilot
-ARG GITHUB_COPILOT_VERSION=0.0.420
+ARG GITHUB_COPILOT_VERSION=0.0.421
 # renovate: datasource=npm depName=@google/gemini-cli
-ARG GEMINI_CLI_VERSION=0.31.0
+ARG GEMINI_CLI_VERSION=0.32.1
 # renovate: datasource=npm depName=@openai/codex
 ARG OPENAI_CODEX_VERSION=0.107.0
 # renovate: datasource=npm depName=opencode-ai
-ARG OPENCODE_VERSION=1.2.15
+ARG OPENCODE_VERSION=1.2.17
 # renovate: datasource=npm depName=@sourcegraph/amp
 ARG AMP_VERSION=0.0.1772481904-gb6b1d9
 # renovate: datasource=npm depName=vibe-kanban
-ARG VIBE_KANBAN_VERSION=0.1.22
+ARG VIBE_KANBAN_VERSION=0.1.23
 
 RUN npm install -g \
     @anthropic-ai/claude-code@${CLAUDE_CODE_VERSION} \
