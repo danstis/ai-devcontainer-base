@@ -52,7 +52,7 @@ ARG OPENCODE_VERSION=1.2.17
 # renovate: datasource=npm depName=@sourcegraph/amp
 ARG AMP_VERSION=0.0.1772481904-gb6b1d9
 # renovate: datasource=npm depName=vibe-kanban
-ARG VIBE_KANBAN_VERSION=0.1.23
+ARG VIBE_KANBAN_VERSION=0.1.24
 
 RUN npm install -g \
     @anthropic-ai/claude-code@${CLAUDE_CODE_VERSION} \
