@@ -1,0 +1,21 @@
+name: Check apt versions
+
+on:
+  schedule:
+    - cron: '0 8 * * 1'  # Every Monday at 08:00 UTC
+  workflow_dispatch:
+
+jobs:
+  check-tmux-version:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Report tmux version in Ubuntu Noble apt
+        run: |
+          echo "=== tmux version in Ubuntu Noble apt ==="
+          apt-cache policy tmux
+
+      - name: Report latest upstream tmux release
+        run: |
+          echo "=== Latest upstream tmux release ==="
+          curl -fsSL https://api.github.com/repos/tmux/tmux/releases/latest \
+            | grep '"tag_name"'

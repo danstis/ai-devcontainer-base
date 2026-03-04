@@ -12,8 +12,12 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 # ---------------------------------------------------------------------------
 # Core terminal utilities
-# tmux is installed from the Ubuntu Noble repository and updated automatically
-# when the image is rebuilt against the latest apt package index.
+# tmux: floating version from the Ubuntu Noble apt repository.
+# Rationale for no pinned version: Ubuntu LTS packages receive in-place
+# security patches without version bumps within the LTS lifecycle, so
+# pinning to a specific apt version provides no reproducibility benefit.
+# A scheduled workflow (.github/workflows/check-apt-versions.yml) surfaces
+# any version drift against upstream tmux releases.
 # ---------------------------------------------------------------------------
 # hadolint ignore=DL3008
 RUN apt-get update \

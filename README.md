@@ -23,7 +23,10 @@ The image includes the following AI/agent CLIs, all installed via npm with pinne
 - [Amp CLI](https://www.npmjs.com/package/@sourcegraph/amp) (`@sourcegraph/amp`)
 - [Vibe Kanban](https://www.npmjs.com/package/vibe-kanban) (`vibe-kanban`)
 - [AgentOS](https://github.com/buildermethods/agent-os) (checked out to `~/agent-os`)
-- [tmux](https://github.com/tmux/tmux/wiki) (installed from Ubuntu apt repositories)
+
+The image also includes the following system utilities, installed from the Ubuntu Noble apt repository:
+
+- [tmux](https://github.com/tmux/tmux/wiki) — terminal multiplexer
 
 Version updates are tracked automatically by [Mend Renovate](https://docs.renovatebot.com/). When a new version of any tool is published to npm, Renovate raises a PR to bump the pinned version in the Dockerfile.
 
