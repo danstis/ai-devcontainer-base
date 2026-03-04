@@ -11,6 +11,16 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 ENV DEBIAN_FRONTEND=noninteractive
 
 # ---------------------------------------------------------------------------
+# Core terminal utilities
+# tmux is installed from the Ubuntu Noble repository and updated automatically
+# when the image is rebuilt against the latest apt package index.
+# ---------------------------------------------------------------------------
+# hadolint ignore=DL3008
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends tmux \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# ---------------------------------------------------------------------------
 # Node.js (LTS) via NodeSource
 # ---------------------------------------------------------------------------
 ARG NODE_VERSION=22

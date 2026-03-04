@@ -23,6 +23,7 @@ The image includes the following AI/agent CLIs, all installed via npm with pinne
 - [Amp CLI](https://www.npmjs.com/package/@sourcegraph/amp) (`@sourcegraph/amp`)
 - [Vibe Kanban](https://www.npmjs.com/package/vibe-kanban) (`vibe-kanban`)
 - [AgentOS](https://github.com/buildermethods/agent-os) (checked out to `~/agent-os`)
+- [tmux](https://github.com/tmux/tmux/wiki) (installed from Ubuntu apt repositories)
 
 Version updates are tracked automatically by [Mend Renovate](https://docs.renovatebot.com/). When a new version of any tool is published to npm, Renovate raises a PR to bump the pinned version in the Dockerfile.
 
@@ -52,7 +53,7 @@ This repository uses automated testing to ensure the image builds correctly and 
 
 - **Linting**: Dockerfile (Hadolint), GitHub Workflows (Actionlint), and Markdown.
 - **Build Verification**: Ensures the Docker image builds successfully.
-- **Smoke Tests**: Verifies that all installed CLIs are executable and available in the default `PATH` for the `vscode` user.
+- **Smoke Tests**: Verifies that installed CLIs and terminal tooling are executable and available in the default `PATH` for the `vscode` user.
 
 ## Contributing
 

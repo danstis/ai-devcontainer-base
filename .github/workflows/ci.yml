@@ -92,6 +92,9 @@ jobs:
             
             echo 'Checking gh...'
             gh --version
+
+            echo 'Checking tmux...'
+            tmux -V
             
             echo 'Checking claude...'
             claude --version
