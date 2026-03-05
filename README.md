@@ -13,9 +13,9 @@ This repository defines the baseline image used by project-specific development 
 
 ## Preinstalled tooling
 
-The image includes the following AI/agent CLIs, all installed via npm with pinned versions:
+The image includes the following AI/agent CLIs with pinned versions:
 
-- [Claude Code](https://www.npmjs.com/package/@anthropic-ai/claude-code) (`@anthropic-ai/claude-code`)
+- [Claude Code](https://github.com/anthropics/claude-code) — installed via the [native installer](https://code.claude.com/docs/en/setup) (binary at `~/.local/bin/claude`)
 - [GitHub Copilot CLI](https://www.npmjs.com/package/@github/copilot) (`@github/copilot`)
 - [Gemini CLI](https://www.npmjs.com/package/@google/gemini-cli) (`@google/gemini-cli`)
 - [Codex CLI](https://www.npmjs.com/package/@openai/codex) (`@openai/codex`)
@@ -28,7 +28,7 @@ The image also includes the following system utilities, installed from the Ubunt
 
 - [tmux](https://github.com/tmux/tmux/wiki) — terminal multiplexer
 
-Version updates are tracked automatically by [Mend Renovate](https://docs.renovatebot.com/). When a new version of any tool is published to npm, Renovate raises a PR to bump the pinned version in the Dockerfile.
+Version updates are tracked automatically by [Mend Renovate](https://docs.renovatebot.com/). When a new version of any tool is published to npm or GitHub Releases, Renovate raises a PR to bump the pinned version in the Dockerfile.
 
 ## Intended usage
 
@@ -48,7 +48,7 @@ To preserve compatibility with the broader Dev Containers ecosystem, the base im
 
 ## Automated dependency updates
 
-All tool versions are tracked in the Dockerfile via `ARG` declarations with `# renovate:` comments. Mend Renovate monitors npm (for AI/agent CLIs) and GitHub Releases (for tmux and other non-npm tools) and automatically opens PRs to update these versions. When a PR merges to `main`, the CI/CD pipeline rebuilds and publishes the image.
+All tool versions are tracked in the Dockerfile via `ARG` declarations with `# renovate:` comments. Mend Renovate monitors npm (for most AI/agent CLIs) and GitHub Releases (for Claude Code, tmux, and other non-npm tools) and automatically opens PRs to update these versions. When a PR merges to `main`, the CI/CD pipeline rebuilds and publishes the image.
 
 ## Quality Assurance
 
