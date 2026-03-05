@@ -77,11 +77,13 @@ RUN npm install -g \
     @sourcegraph/amp@${AMP_VERSION} \
     && npm cache clean --force
 
-# vibe-kanban: installed via a wrapper script using npx so the binary is
-# always available by name. The package does declare a bin entry but does not
-# produce a working global binary via npm install -g; npx is the supported
-# invocation method per upstream docs.
-RUN printf '#!/bin/sh\nexec npx vibe-kanban@%s "$@"\n' "${VIBE_KANBAN_VERSION}" \
+# vibe-kanban: the package declares a bin entry but does not produce a working
+# global binary via npm install -g. Install it into /opt/vibe-kanban at build
+# time so the package is preinstalled in the image (no runtime network access
+# required), then expose it via a wrapper script on PATH.
+RUN npm install --prefix /opt/vibe-kanban vibe-kanban@${VIBE_KANBAN_VERSION} \
+    && npm cache clean --force \
+    && printf '#!/bin/sh\nexec /opt/vibe-kanban/node_modules/.bin/vibe-kanban "$@"\n' \
     > /usr/local/bin/vibe-kanban \
     && chmod +x /usr/local/bin/vibe-kanban
 
