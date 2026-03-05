@@ -74,7 +74,7 @@ jobs:
             type=raw,value=${{ steps.version.outputs.new_version }}-${{ steps.branch.outputs.name }},enable=${{ github.ref != 'refs/heads/main' && steps.version.outputs.new_version != '' }}
 
       - name: Build and push image
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           context: .devcontainer
           file: .devcontainer/Dockerfile
