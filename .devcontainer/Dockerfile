@@ -107,3 +107,6 @@ RUN git clone --depth 1 --branch ${AGENT_OS_REF} ${AGENT_OS_REPO} /home/vscode/a
 LABEL maintainer="danstis" \
     description="Dev Container base image with AI/agent CLI tooling" \
     org.opencontainers.image.source="https://github.com/danstis/ai-devcontainer-base"
+
+# Drop back to the non-root user expected by Dev Containers (satisfies DL3002)
+USER vscode
