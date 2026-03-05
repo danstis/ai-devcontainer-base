@@ -75,8 +75,15 @@ RUN npm install -g \
     @openai/codex@${OPENAI_CODEX_VERSION} \
     opencode-ai@${OPENCODE_VERSION} \
     @sourcegraph/amp@${AMP_VERSION} \
-    vibe-kanban@${VIBE_KANBAN_VERSION} \
     && npm cache clean --force
+
+# vibe-kanban: installed via a wrapper script using npx so the binary is
+# always available by name. The package does declare a bin entry but does not
+# produce a working global binary via npm install -g; npx is the supported
+# invocation method per upstream docs.
+RUN printf '#!/bin/sh\nexec npx vibe-kanban@%s "$@"\n' "${VIBE_KANBAN_VERSION}" \
+    > /usr/local/bin/vibe-kanban \
+    && chmod +x /usr/local/bin/vibe-kanban
 
 # ---------------------------------------------------------------------------
 # AgentOS
