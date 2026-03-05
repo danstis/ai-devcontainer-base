@@ -10,6 +10,9 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 # Avoid prompts during package installation
 ENV DEBIAN_FRONTEND=noninteractive
 
+# Ensure ~/.local/bin (native tool installs) is on PATH for vscode user
+ENV PATH=/home/vscode/.local/bin:${PATH}
+
 # ---------------------------------------------------------------------------
 # Core terminal utilities
 # tmux: tracked via Renovate (datasource=github-releases). The ARG below is
@@ -51,10 +54,20 @@ RUN mkdir -p /etc/apt/keyrings \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # ---------------------------------------------------------------------------
+# Claude Code (native installer)
+# Native install is the recommended method as of 2026-02; npm is deprecated.
+# The installer places the binary at ~/.local/bin/claude for the target user.
+# Run as vscode so $HOME resolves to /home/vscode, matching Dev Container
+# conventions. Switch back to root afterwards for subsequent system-level steps.
+# renovate: datasource=github-releases depName=anthropics/claude-code
+ARG CLAUDE_CODE_VERSION=2.1.68
+USER vscode
+RUN curl -fsSL https://claude.ai/install.sh | bash -s "${CLAUDE_CODE_VERSION#v}"
+USER root
+
+# ---------------------------------------------------------------------------
 # AI / Agent CLI tools (npm global installs)
 # ---------------------------------------------------------------------------
-# renovate: datasource=npm depName=@anthropic-ai/claude-code
-ARG CLAUDE_CODE_VERSION=2.1.68
 # renovate: datasource=npm depName=@github/copilot
 ARG GITHUB_COPILOT_VERSION=0.0.421
 # renovate: datasource=npm depName=@google/gemini-cli
@@ -69,7 +82,6 @@ ARG AMP_VERSION=0.0.1772481904-gb6b1d9
 ARG VIBE_KANBAN_VERSION=0.1.24
 
 RUN npm install -g \
-    @anthropic-ai/claude-code@${CLAUDE_CODE_VERSION} \
     @github/copilot@${GITHUB_COPILOT_VERSION} \
     @google/gemini-cli@${GEMINI_CLI_VERSION} \
     @openai/codex@${OPENAI_CODEX_VERSION} \
@@ -95,3 +107,6 @@ RUN git clone --depth 1 --branch ${AGENT_OS_REF} ${AGENT_OS_REPO} /home/vscode/a
 LABEL maintainer="danstis" \
     description="Dev Container base image with AI/agent CLI tooling" \
     org.opencontainers.image.source="https://github.com/danstis/ai-devcontainer-base"
+
+# Drop back to the non-root user expected by Dev Containers (satisfies DL3002)
+USER vscode
