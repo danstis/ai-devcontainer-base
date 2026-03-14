@@ -40,7 +40,7 @@ RUN curl -fsSL https://deb.nodesource.com/setup_${NODE_VERSION}.x | bash - \
 # GitHub CLI
 # ---------------------------------------------------------------------------
 # renovate: datasource=github-releases depName=cli/cli
-ARG GH_VERSION=2.87.3
+ARG GH_VERSION=2.88.1
 # hadolint ignore=DL3008
 RUN mkdir -p /etc/apt/keyrings \
     && chmod 755 /etc/apt/keyrings \
@@ -60,7 +60,7 @@ RUN mkdir -p /etc/apt/keyrings \
 # Run as vscode so $HOME resolves to /home/vscode, matching Dev Container
 # conventions. Switch back to root afterwards for subsequent system-level steps.
 # renovate: datasource=github-releases depName=anthropics/claude-code
-ARG CLAUDE_CODE_VERSION=2.1.69
+ARG CLAUDE_CODE_VERSION=2.1.76
 USER vscode
 RUN curl -fsSL https://claude.ai/install.sh | bash -s "${CLAUDE_CODE_VERSION#v}"
 USER root
@@ -69,17 +69,17 @@ USER root
 # AI / Agent CLI tools (npm global installs)
 # ---------------------------------------------------------------------------
 # renovate: datasource=npm depName=@github/copilot
-ARG GITHUB_COPILOT_VERSION=0.0.422
+ARG GITHUB_COPILOT_VERSION=0.0.423
 # renovate: datasource=npm depName=@google/gemini-cli
-ARG GEMINI_CLI_VERSION=0.32.1
+ARG GEMINI_CLI_VERSION=0.33.1
 # renovate: datasource=npm depName=@openai/codex
-ARG OPENAI_CODEX_VERSION=0.111.0
+ARG OPENAI_CODEX_VERSION=0.114.0
 # renovate: datasource=npm depName=opencode-ai
-ARG OPENCODE_VERSION=1.2.18
+ARG OPENCODE_VERSION=1.2.26
 # renovate: datasource=npm depName=@sourcegraph/amp
 ARG AMP_VERSION=0.0.1772481904-gb6b1d9
 # renovate: datasource=npm depName=vibe-kanban
-ARG VIBE_KANBAN_VERSION=0.1.24
+ARG VIBE_KANBAN_VERSION=0.1.30
 
 RUN npm install -g \
     @github/copilot@${GITHUB_COPILOT_VERSION} \
