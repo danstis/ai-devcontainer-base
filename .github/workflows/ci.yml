@@ -23,7 +23,7 @@ jobs:
 
       - name: Lint Workflow
         id: lint_workflow
-        uses: rhysd/actionlint@v1.7.11
+        uses: rhysd/actionlint@v1.7.12
         continue-on-error: true
 
       - name: Lint Markdown
