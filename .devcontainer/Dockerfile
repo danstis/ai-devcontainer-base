@@ -69,7 +69,7 @@ USER root
 # AI / Agent CLI tools (npm global installs)
 # ---------------------------------------------------------------------------
 # renovate: datasource=npm depName=@github/copilot
-ARG GITHUB_COPILOT_VERSION=0.0.423
+ARG GITHUB_COPILOT_VERSION=1.0.83
 # renovate: datasource=npm depName=@google/gemini-cli
 ARG GEMINI_CLI_VERSION=0.46.0
 # renovate: datasource=npm depName=@openai/codex
