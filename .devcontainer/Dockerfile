@@ -21,7 +21,7 @@ ENV PATH=/home/vscode/.local/bin:${PATH}
 # GitHub tags, so the ARG is not passed to apt-get).
 # ---------------------------------------------------------------------------
 # renovate: datasource=github-releases depName=tmux/tmux
-ARG TMUX_VERSION=3.6
+ARG TMUX_VERSION=3.7
 # hadolint ignore=DL3008
 RUN apt-get update \
     && apt-get install -y --no-install-recommends tmux \
@@ -40,7 +40,7 @@ RUN curl -fsSL https://deb.nodesource.com/setup_${NODE_VERSION}.x | bash - \
 # GitHub CLI
 # ---------------------------------------------------------------------------
 # renovate: datasource=github-releases depName=cli/cli
-ARG GH_VERSION=2.93.0
+ARG GH_VERSION=2.100.0
 # hadolint ignore=DL3008
 RUN mkdir -p /etc/apt/keyrings \
     && chmod 755 /etc/apt/keyrings \
@@ -60,7 +60,7 @@ RUN mkdir -p /etc/apt/keyrings \
 # Run as vscode so $HOME resolves to /home/vscode, matching Dev Container
 # conventions. Switch back to root afterwards for subsequent system-level steps.
 # renovate: datasource=github-releases depName=anthropics/claude-code
-ARG CLAUDE_CODE_VERSION=2.1.170
+ARG CLAUDE_CODE_VERSION=2.1.263
 USER vscode
 RUN curl -fsSL https://claude.ai/install.sh | bash -s "${CLAUDE_CODE_VERSION#v}"
 USER root
@@ -71,11 +71,11 @@ USER root
 # renovate: datasource=npm depName=@github/copilot
 ARG GITHUB_COPILOT_VERSION=0.0.423
 # renovate: datasource=npm depName=@google/gemini-cli
-ARG GEMINI_CLI_VERSION=0.46.0
+ARG GEMINI_CLI_VERSION=0.58.0
 # renovate: datasource=npm depName=@openai/codex
-ARG OPENAI_CODEX_VERSION=0.139.0
+ARG OPENAI_CODEX_VERSION=0.153.4
 # renovate: datasource=npm depName=opencode-ai
-ARG OPENCODE_VERSION=1.17.0
+ARG OPENCODE_VERSION=1.18.29
 # renovate: datasource=npm depName=@sourcegraph/amp
 ARG AMP_VERSION=0.0.1772481904-gb6b1d9
 # renovate: datasource=npm depName=vibe-kanban
